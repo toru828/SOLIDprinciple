@@ -17,7 +17,7 @@ interface hasPowerInterface
     public  function  hasPower();
 }
 
-class HumanWorker implements workerInterface
+class HumanWorker implements workerInterface, sleepInterface
 {
     public  function work()
     {
@@ -31,12 +31,12 @@ class HumanWorker implements workerInterface
 
 }
 
-class RobotWorker extends HumanWorker
+class RobotWorker implements workerInterface, hasPowerInterface
 {
-    public  function work()
+    public function work()
     {
         if ($this->hasPower()) {
-       parent::work();
+            var_dump('works');
         }
     }
     
